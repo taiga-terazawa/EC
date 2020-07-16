@@ -1,0 +1,53 @@
+{% extends 'tool/base.html' %}
+{% block content %}
+<h2>商品情報の一覧・変更</h2>
+<table>
+    <tr>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>価格</th>
+        <th>在庫数</th>
+        <th>ステータス</th>
+        <th>操作</th>
+    </tr>
+    {% for item in items %}
+    <tr class="status_false">
+        <td><img class="img_size" src="/{{ item.image }}" style="width: 150px; height: auto;"></td>
+        <td class="name_width">{{item.name}}</td>
+        <td class="text_align_right">¥{{item.price}}</td>
+        <!--在庫数変更-->
+        <td>
+            <form method="post" action="{% url 'stock_edit' item.id %}">
+                {% csrf_token %}
+
+                {% for item_stock in  item.item_stocks.all %}
+                <input type="text" class="input_text_width text_align_right" name="stock" value="{{ item_stock.stock}}">個
+                {% endfor %}
+                <button type="submit">変更</button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="{% url 'status_edit' item.id %}">
+                {% csrf_token %}
+                {% if  item.status == 0%}
+                <input type="submit" name="status_button" value="非公開→公開">
+                <!--非公開『0』を選択で背景色グレーに変更-->
+                <input type="hidden" name="status" value="1">
+                {% else %}
+                <input type="submit" name="status_button" value="公開→非公開">
+                <input type="hidden" name="status" value="0">
+                {% endif %}
+            </form>
+
+        </td>
+        <td>
+            <!--削除-->
+            <form method="post" action="{% url 'item_remove' item.id %}">
+                {% csrf_token %}
+                <input type="submit" value="削除">
+            </form>
+
+        </td>
+    </tr>
+    {% endfor %}
+    {% endblock %}

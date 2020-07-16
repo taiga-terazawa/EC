@@ -1,0 +1,44 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SHOP</title>
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="header-box">
+            <!-- 簡易サーバー用 -->
+            <!-- <a href="/"><img class="logo" src="/images/logo.png" alt="TEST SHOP"></a> -->
+            <a href="/"><img class="logo" src="{% static 'images/logo.png' %}" alt="TEST SHOP"></a>
+
+            <!-- <form method="post" action="">
+
+        <input class="nemu btn btn-flat-border" type="submit" value="logout">
+      </form> -->
+            {% if user.is_authenticated %}
+            <a href="{% url 'cart_list' %}"><i class="cart fas fa-cart-arrow-down fa-2x"></i></a>
+            <p class="nemu user_name">user:{{ user.username }}</p>
+            <small><a href="{% url 'logout' %}" class="nemu btn btn-flat-border">Logout&nbsp;&nbsp;/</a></small>
+            {% else %}
+            <a href="{% url 'login' %}" class="nemu top-menu"><i class="fas fa-sign-in-alt">Login</i></a>
+            {% endif %}
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    {% include 'js/page_js.html' %}
+
+</body>
+<footer>
+    <p><small> &#169; TestUser All Rights Reserved.</small></p>
+</footer>

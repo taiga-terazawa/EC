@@ -1,0 +1,116 @@
+section {
+ margin-bottom: 20px;
+ border-top: solid 1px;
+}
+
+table {
+ width: 860px;
+ border-collapse: collapse;
+}
+
+table, tr, th, td {
+ border: solid 1px;
+ padding: 10px;
+ text-align: center;
+}
+
+caption {
+ text-align: left;
+}
+
+.text_align_right {
+ text-align: right;
+}
+
+.name_width {
+ width: 100px;
+}
+
+.input_text_width {
+ width: 60px;
+}
+
+.status_false {
+ background-color: #A9A9A9;
+}
+
+.img_size {
+ height: 125px;
+}
+
+.success-msg {
+ color: blue;
+}
+
+.err-msg {
+ color: #FF0000;
+}
+
+.erros {
+   color: #FF0000;
+}
+
+.create_event {
+  margin-left: 40%;
+}
+
+.create {
+  padding-bottom:20px;
+}
+
+.tool {
+}
+
+.kakomi-maru1 {
+ margin: 2em auto;
+ padding: 1em;
+ width: 90%; /*幅の調節*/
+ color: #666666; /*文字色*/
+ background-color: #E6E6E6; /*背景色*/
+ border: 2px solid #ccc; /*線の太さ・色*/
+ border-radius: 8px; /*角の丸み*/
+
+}
+
+.btn-square-little-rich {
+  /* position: relative; */
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #000;/*色*/
+  border: solid 1px #D8D8D8;/*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-square-little-rich:active {
+  /*押したとき*/
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.btn2-square-little-rich {
+  /* position: relative; */
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #000;
+  background: #D8D8D8;/*色*/
+  border: solid 1px #D8D8D8;/*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  font-size:15px;
+  width: 120px;
+  height: 50px;
+}
+
+.btn2-square-little-rich:active {
+  /*押したとき*/
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}

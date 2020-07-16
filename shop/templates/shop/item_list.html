@@ -1,0 +1,83 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+
+<div class="content">
+
+    <div class="main">
+        <form method="POST">
+            <div class="categorize_menu">
+                <a href="/?category=食品" id="eat">食品</a>/
+                <a href="/?category=ファッション" id="wear">ファッション</a>/
+                <a href="/?category=家具" id="furniture">家具</a>/
+                <a href="/?category=テクノロジー" id="tec">テクノロジー</a>/
+                <a href="/?category=贈り物" id="gift">贈り物</a>/
+                <a href="/?category=その他" id="other">その他</a>
+        </form>
+    </div>
+
+    <div id="item_list">
+        <ul class="item-list">
+            <div class=serch_menu>
+                <form method="GET" action="{% url 'item_list' %}">
+                    <input type="text" name="keyword">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            {% for item in items %}
+
+            <li>
+                <div class="item">
+                    <form action="{% url 'cart_plus'  item.id %}" method="post">
+                        {% csrf_token %}
+
+                        {% for item_stock in  item.item_stocks.all %}
+                        {% if item_stock.stock > 0 %}
+                        <a href=""><img class="item-img" src="/{{ item.image }}"></a>
+                        {% else %}
+                        <a href="#"><img class="item-img" src="/{{ item.image }}"></a>
+                        {% endif %}
+                        {% endfor %}
+
+
+                        <div class="item-info">
+                            <span class="item-name">{{item.name}}</span>
+                            <span class="item-price">¥{{item.price}}</span>
+                            {% for item_stock in  item.item_stocks.all %}
+                            {% if item_stock.stock == 0 %}
+
+                            <p class="sold-out">売り切れ</p>
+                            {% else %}
+                            <input class="cart-btn btn-flat-double-border" type="submit" value="カートに入れる">
+                            {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if items.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ items.previous_page_number }}">previous</a>
+        {% endif %}
+
+
+        <span class="current">
+            Page {{ items.number }} of {{ items.paginator.num_pages }}.
+        </span>
+
+
+        {% if items.has_next %}
+        <a href="?page={{ items.next_page_number }}">next</a>
+        <a href="?page={{ items.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{% endblock %}

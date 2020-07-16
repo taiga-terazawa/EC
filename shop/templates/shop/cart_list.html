@@ -1,0 +1,49 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="content">
+    <h1 class="title">カート</h1>
+    <a href="/" class="btn-flat-border2">買い物を続ける</a>
+    <ul class="cart-list">
+        <!-- withで変数宣言できる -->
+
+
+        {% for item in items %}
+        <li>
+
+            <!--カート内商品を表示-->
+
+            <div class="cart-item">
+                <!-- <img class="cart-item-img" src="/{{ item.image }}"> -->
+                <span class="cart-item-name">{{item.item.name}}</span>
+                <!--削除した際にこのページを表示する-->
+                <form class="cart-item-del" action="{% url 'cart_remove' item.pk %}" method="post">
+                    {% csrf_token %}
+                    <input class="delete-cart" type="submit" value="削除">
+                </form>
+                <span class="cart-item-price">¥{{item.item.price}}</span>
+
+                <!--数量の値をPOSTで送る-->
+                <form class="form_select_amount" id="form_select_amount" action="{% url 'amount_edit' item.pk %}" method="post">
+                    {% csrf_token %}
+
+                    {{item.amount}}個
+                    {{ form.as_p }}
+
+                    <input type="submit" value="変更する">
+                </form>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="buy-sum-box">
+        <span class="buy-sum-title">合計</span>
+        <span class="buy-sum-price">¥{{ sum_price }}</span>
+    </div>
+    <div>
+        <form action="{% url 'finish_list' %}" method="POST">
+            {% csrf_token %}
+            <input class="buy-btn" type="submit" value="購入する">
+        </form>
+    </div>
+</div>
+{% endblock %}

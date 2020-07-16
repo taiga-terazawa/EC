@@ -1,0 +1,42 @@
+<ul id="cate-list">
+    <div class=serch_menu>
+        <form method="GET" action="{% url 'item_list' %}">
+            <input type="text" name="keyword">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    {% for item in items %}
+
+    <li>
+        <div class="item">
+            <form action="{% url 'cart_plus'  item.id %}" method="post">
+                {% csrf_token %}
+
+                {% for item_stock in  item.item_stocks.all %}
+                {% if item_stock.stock > 0 %}
+                <a href=""><img class="item-img" src="/{{ item.image }}"></a>
+                {% else %}
+                <a href="#"><img class="item-img" src="/{{ item.image }}"></a>
+                {% endif %}
+                {% endfor %}
+
+
+                <div class="item-info">
+                    <span class="item-name">{{item.name}}</span>
+                    <span class="item-price">¥{{item.price}}</span>
+                    {% for item_stock in  item.item_stocks.all %}
+                    {% if item_stock.stock == 0 %}
+
+                    <p class="sold-out">売り切れ</p>
+                    {% else %}
+                    <input class="cart-btn btn-flat-double-border" type="submit" value="カートに入れる">
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

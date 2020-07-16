@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %} {% block content %} {% if form.errors %}
+<p>もっかいログインしてね</p>
+
+{% endif %}
+
+<div class="text-center mb-4">
+
+  <a href="{% url 'registration' %}">新規登録はこちら</a>
+
+  <form action="{% url 'login' %}" method="POST" class="form-signin">
+    {% csrf_token %}
+
+    <table class="login_center">
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{form.username}}</td>
+      </tr>
+      <tr>
+        <td>{{form.password.label_tag}}</td>
+        <td>{{form.password}}</td>
+      </tr>
+    </table>
+
+    <input type="submit" value="ログイン" />
+    <input type="hidden" name="next" value="{{next}}" />
+
+  </form>
+</div>
+
+{% endblock %}

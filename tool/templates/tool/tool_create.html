@@ -1,0 +1,16 @@
+{% extends 'tool/base.html' %}
+{% block content %}
+
+<section>
+    <h2>新規商品追加</h2>
+    <form method="post" id="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{choice.status}}
+        {{choice.category}}
+        {{stock_form.as_p}}
+        <!-- ここに商品登録をformsを使って入れていく -->
+        <button type="submit">保存</button>
+    </form>
+</section>
+{% endblock %}

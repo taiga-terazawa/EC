@@ -1,0 +1,31 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/tool.css' %}" />
+
+</head>
+
+<body>
+    <h1>管理ページ</h1>
+    <div class="create_item">
+
+        <a href="{% url 'logout' %}" style="color:red;">ログアウト</a>/
+        <a href="{% url 'user_list' %}">ユーザ管理ページ</a>/
+        <a href="{% url 'tool_create' %}">商品追加ページ</a>/
+        <a href="{% url 'tool_list' %}">商品管理ページ</a>
+
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
