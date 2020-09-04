@@ -216,16 +216,7 @@ header {
   /* display: block; */
   width: 50px;
   height: 50px;
-  /* background:url("/storage/images/cart_on.png")  no-repeat; */
 }
-
-/* a:hover.cart {
-  background: url("/storage/images/cart_hover.png") no-repeat;
-}
-
-a:active.cart {
-  background: url("../img/cart_on.png") no-repeat;
-} */
 
 .nemu {
   float: right;

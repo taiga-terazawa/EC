@@ -12,7 +12,9 @@
     </tr>
     {% for item in items %}
     <tr class="status_false">
-        <td><img class="img_size" src="/{{ item.image }}" style="width: 150px; height: auto;"></td>
+        <td><img class="img_size" src="/static/ec/img/{{ item.image }}" style="width: 150px; height: auto;"></td>
+
+
         <td class="name_width">{{item.name}}</td>
         <td class="text_align_right">¥{{item.price}}</td>
         <!--在庫数変更-->

@@ -36,6 +36,8 @@ if settings.DEBUG:
   import debug_toolbar
   # import debug_toolbar
   urlpatterns.append(path("", include(debug_toolbar.urls)))
-#   imageルート
-  urlpatterns += static(settings.IMAGE_URL,
-                        document_root=settings.IMAGE_ROOT)
+
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#   urlpatterns += static(settings.IMAGE_URL,
+#                         document_root=settings.IMAGE_ROOT)

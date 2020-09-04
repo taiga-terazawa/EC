@@ -9,7 +9,10 @@ from django.contrib.auth.models import User
 class Item(models.Model):
   name = models.CharField(max_length=200)
   price = models.IntegerField()
-  image = models.ImageField(upload_to='images', blank=True, null=True)
+  image = models.ImageField(upload_to='', blank=True, null=True)
+  # 簡易サーバー
+  # image = models.ImageField(upload_to='images/img', blank=True, null=True)
+
   status = models.IntegerField()
   category = models.CharField(max_length=200)
   created_date = models.DateTimeField(default=timezone.now)

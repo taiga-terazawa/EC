@@ -2,12 +2,12 @@
 {% block content %}
 <div class="content">
     <h1 class="title">カート</h1>
-    <a href="/" class="btn-flat-border2">買い物を続ける</a>
+    <a href="{% url 'item_list' %}" class="btn-flat-border2">買い物を続ける</a>
     <ul class="cart-list">
         <!-- withで変数宣言できる -->
 
-
         {% for item in items %}
+
         <li>
 
             <!--カート内商品を表示-->
@@ -33,7 +33,10 @@
                 </form>
             </div>
         </li>
+
+
         {% endfor %}
+
     </ul>
     <div class="buy-sum-box">
         <span class="buy-sum-title">合計</span>

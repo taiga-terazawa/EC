@@ -145,14 +145,25 @@ STATIC_URL = '/static/ec/'
 
 # ここで設定したディレクトリ に静的ファイルが入る
 STATIC_ROOT = '/home/ecshop/www/static/ec/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'images')
+]
+
+MEDIA_URL = '/images/img/'
+
+# ここで指定したところにファイルが保存される
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'images/img')
+MEDIA_ROOT = '/home/ecshop/www/static/ec/img'
+
+# 簡易サーバー
+# MEDIA_URL = '/images/img/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'images/img')
 
 # 簡易サーバー用
-# IMAGE_URL = '/images/'
-# IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
-
-IMAGE_URL = '/static/ec/'
-IMAGE_ROOT = '/home/ecshop/www/static/ec/'
-
-LOGIN_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
 
 PAGE_PER_ITEM = 10
+
+LOGIN_URL = '/EC/accounts/login/'
+LOGIN_REDIRECT_URL = '/EC/'
+LOGOUT_URL = '/EC/accounts/logout/'
